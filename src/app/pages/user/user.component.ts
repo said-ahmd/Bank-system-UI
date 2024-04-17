@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AccountControlerService} from "../../services/services/account-controler.service";
 import {AccountResponse} from "../../services/models/account-response";
 import {NgForOf, NgIf} from "@angular/common";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-user',
@@ -16,29 +17,24 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class UserComponent {
 
-  accounts: AccountResponse[]= [];
+  accounts: any[]= [];
   errorMessage: string ='';
-  constructor(
-    private router:Router,
-    private accountService: AccountControlerService
+  constructor(private http: HttpClient){
 
-  ){}
+  }
+  ngOnInit():void
+  {
 
-    listMyAccounts(){
-      this.accountService.getUserAccounts()
-        .subscribe({
-          next: (res)=>{
-            if (res instanceof Blob && res.type === 'application/json'){
-              res.text().then((text)=>{
-                const jsonResponse = JSON.parse(text);
-                this.accounts = jsonResponse;
-              });
-            }
-          },
-          error: (err)=>{
-            this.errorMessage = 'Error fetching accounts.';
-          }
+  }
+
+    listMyAccounts() {
+      debugger;
+        this.http.get('http://localhost:8081/bank/account').subscribe((res:any)=>{
+          this.accounts= res.data;
+          console.log(this.accounts)
+        },error => {
+          alert("error from api")
         })
-    }
+      }
  }
 
