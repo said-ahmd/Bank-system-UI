@@ -1,0 +1,29 @@
+.user-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.account-list {
+  margin-top: 20px;
+}
+
+.account-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.account-list li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.account-list li p {
+  margin: 5px 0;
+}

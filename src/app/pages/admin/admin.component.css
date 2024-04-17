@@ -1,0 +1,42 @@
+/* Styling for the button */
+.btn-link {
+  background: none;
+  border: none;
+  color: #007bff; /* Blue color */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Styling for the user list container */
+.user-list-container {
+  margin-top: 20px;
+}
+
+/* Styling for the user list heading */
+.user-list-heading {
+  font-size: 1.5rem; /* Larger font size */
+  color: #333; /* Darker color */
+}
+
+/* Styling for the user list */
+.user-list {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+}
+
+/* Styling for each user item */
+.user-item {
+  margin-bottom: 20px; /* Spacing between users */
+}
+
+/* Styling for user details */
+.user-details {
+  font-size: 1rem; /* Normal font size */
+  color: #666; /* Lighter color */
+}
+
+/* Styling for strong tags within user details */
+.user-details strong {
+  font-weight: bold; /* Make text bold */
+  margin-right: 5px; /* Spacing between label and value */
+}

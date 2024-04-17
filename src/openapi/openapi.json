@@ -1,0 +1,533 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Bank-System-API",
+    "description": "OpenApi documentation for Bank-System-API",
+    "contact": {
+      "name": "said",
+      "email": "said.ahmd.cs@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081",
+      "description": "local ENV"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": [ ]
+    }
+  ],
+  "paths": {
+    "/bank/user": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "getUserInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "deactivateMyUser",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserActivityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/account/{cardNumber}": {
+      "put": {
+        "tags": [
+          "account-controler"
+        ],
+        "operationId": "deActivateMyAccoutn_1",
+        "parameters": [
+          {
+            "name": "cardNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountActivityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/transaction/withdraw": {
+      "post": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "operationId": "withdraw",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransactionRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/transaction/deposit": {
+      "post": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "operationId": "deposit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepositRequistDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/auth/register": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/auth/authenticate": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "operationId": "authenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtuthenticationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/account": {
+      "get": {
+        "tags": [
+          "account-controler"
+        ],
+        "operationId": "getUserAccounts",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccountResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "account-controler"
+        ],
+        "operationId": "createAccount",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/user/users": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bank/account/{accountId}": {
+      "get": {
+        "tags": [
+          "account-controler"
+        ],
+        "operationId": "getAccountHistory",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccountTransactionsHistoryResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hello": {
+      "get": {
+        "tags": [
+          "hello"
+        ],
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserActivityResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AccountActivityResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TransactionRequestDTO": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "maxLength": 16,
+            "minLength": 16,
+            "pattern": "^[0-9]+$",
+            "type": "string"
+          },
+          "amount": {
+            "minimum": 5,
+            "type": "number",
+            "format": "double"
+          },
+          "cvv": {
+            "type": "string"
+          }
+        }
+      },
+      "DepositRequistDTO": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "minimum": 5,
+            "type": "number",
+            "format": "double"
+          },
+          "cardNumber": {
+            "maxLength": 16,
+            "minLength": 16,
+            "pattern": "^[0-9]+$",
+            "type": "string"
+          }
+        }
+      },
+      "RegisterRequest": {
+        "required": [
+          "address",
+          "email",
+          "firstName",
+          "password",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "maxLength": 2147483647,
+            "minLength": 2,
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 2147483647,
+            "minLength": 8,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "maxLength": 11,
+            "minLength": 11,
+            "pattern": "^[0-9]+$",
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthenticationResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "AtuthenticationRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountResponse": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "cvv": {
+            "type": "string"
+          }
+        }
+      },
+      "UserResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AccountTransactionsHistoryResponseDto": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "transactionType": {
+            "type": "string",
+            "enum": [
+              "DEPOSIT",
+              "WITHDRAW"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "JWT authentication",
+        "in": "header",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
