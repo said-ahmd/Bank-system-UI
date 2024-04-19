@@ -1,0 +1,17 @@
+
+<h3>Your Accounts dsd</h3>
+<hr>
+<div class="d-flex justify-content-start gap-2 flex-wrap">
+    <ul class="account-list">
+      <li class="account-item" *ngFor="let account of accounts">
+        <div class="account-details">
+          <strong>Card Number:</strong>{{account.cardNumber}}<br>
+          <strong>CVV:</strong>{{account.cvv}}<br>
+          <strong>Card Status:</strong>{{account.status}}<br>
+          <strong>Your Balance:</strong>{{account.balance}}<br>
+          <strong>Created At:</strong>{{account.createdAt}}<br>
+        </div>
+        <br><br>
+      </li>
+    </ul>
+</div>

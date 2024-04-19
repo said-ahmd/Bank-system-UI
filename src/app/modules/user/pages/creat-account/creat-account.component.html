@@ -1,0 +1,13 @@
+<!-- create-account.component.html -->
+
+<div>
+  <h1>Create Account</h1>
+  <button (click)="createAccount()">Create Account</button>
+  <div *ngIf="accoutCreationRsponse">
+    <strong>Card Number:  </strong>{{accoutCreationRsponse.cardNumber}}<br>
+    <strong>CVV:  </strong>{{accoutCreationRsponse.cvv}}<br>
+    <strong>Balance:  </strong>{{accoutCreationRsponse.balance}}<br>
+    <strong>Created At:  </strong>{{accoutCreationRsponse.createdAt}}<br>
+    <strong>Status:  </strong>{{accoutCreationRsponse.status}}<br>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container-fluid card">
+  <h3>Deposit some money</h3>
+  <hr>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage.length">
+    <p *ngFor="let message of errorMessage">{{ message }}</p>
+  </div>
+  <div class="mb-3">
+    <label for="cardNumber" class="form-label">Card Number</label>
+    <input [(ngModel)]="depositRequest.cardNumber" type="text" class="form-control" id="cardNumber" placeholder="xxxxxxxxxxxxxxxx">
+  </div>
+  <div class="mb-3">
+    <label for="amount" class="form-label">Amount</label>
+    <input [(ngModel)]="depositRequest.amount" type="text" class="form-control" id="amount">
+  </div>
+  <div class="d-flex justify-content-between">
+    <button (click)="deoposit()" type="button" class="btn btn-primary">
+      Deposit
+    </button>
+    <span class="text-success" *ngIf="depositSuccess">{{ depositSuccess }}</span>
+  </div>
+</div>

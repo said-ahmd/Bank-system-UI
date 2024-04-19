@@ -1,0 +1,25 @@
+<div class="container-fluid card">
+  <h3>Withdraw money</h3>
+  <hr>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMeassag.length">
+    <p *ngFor="let message of errorMeassag">{{ message }}</p>
+  </div>
+  <div class="mb-3">
+    <label for="cardNumber" class="form-label">Card Number</label>
+    <input [(ngModel)]="withdrawRequest.cardNumber" type="text" class="form-control" id="cardNumber" placeholder="card number">
+  </div>
+  <div class="mb-3">
+    <label for="cvv" class="form-label">CVV</label>
+    <input [(ngModel)]="withdrawRequest.cvv" type="text" class="form-control" id="cvv" placeholder="cvv">
+  </div>
+  <div class="mb-3">
+    <label for="amount" class="form-label">Amount</label>
+    <input [(ngModel)]="withdrawRequest.amount" type="text" class="form-control" id="amount">
+  </div>
+  <div class="d-flex justify-content-between">
+    <button (click)="withdraw()" type="button" class="btn btn-primary">
+      Deposit
+    </button>
+    <span class="text-success" *ngIf="withdrawSuccess">{{ withdrawSuccess }}</span>
+  </div>
+</div>
